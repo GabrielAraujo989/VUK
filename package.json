@@ -4,7 +4,10 @@
   "scripts": {
     "install-frontend": "cd frontend && npm install",
     "build": "cd frontend && npm run build",
-    "start": "npx http-server frontend/dist/frontend/browser -p $PORT"
+    "start": "http-server frontend/dist/frontend/browser -p ${PORT:-8080}"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "http-server": "^14.1.1"
