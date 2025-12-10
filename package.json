@@ -2,8 +2,7 @@
   "name": "vuk",
   "version": "1.0.0",
   "scripts": {
-    "install-frontend": "cd frontend && npm install",
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm install && npm run build",
     "start": "http-server frontend/dist/frontend/browser -p ${PORT:-8080}"
   },
   "engines": {
