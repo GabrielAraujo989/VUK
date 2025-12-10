@@ -1,0 +1,12 @@
+{
+  "name": "vuk",
+  "version": "1.0.0",
+  "scripts": {
+    "install-frontend": "cd frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "npx http-server frontend/dist/frontend/browser -p $PORT"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
