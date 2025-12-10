@@ -1,0 +1,41 @@
+<!-- Hero Section - Primeira seção impactante -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background com gradiente animado -->
+  <div class="absolute inset-0 bg-gradient-vuk opacity-20"></div>
+  <div class="absolute inset-0 bg-vuk-dark-950"></div>
+
+  <!-- Efeitos de glow -->
+  <div class="absolute w-96 h-96 bg-vuk-primary-500 rounded-full blur-[120px] opacity-20 transition-all duration-500 ease-out pointer-events-none"
+       [style.left.%]="glowX"
+       [style.top.%]="glowY"
+       style="transform: translate(-50%, -50%)"></div>
+  <div class="absolute w-96 h-96 bg-vuk-accent-500 rounded-full blur-[120px] opacity-20 transition-all duration-700 ease-out pointer-events-none"
+       [style.left.%]="glow2X"
+       [style.top.%]="glow2Y"
+       style="transform: translate(-50%, -50%)"></div>
+
+  <!-- Conteúdo -->
+  <div class="relative z-10 container mx-auto px-6 text-center">
+    <h1 class="font-display text-6xl md:text-8xl font-bold mb-6 bg-gradient-vuk bg-clip-text text-transparent animate-fade-in">
+      VUK
+    </h1>
+    <p class="text-2xl md:text-4xl font-light text-vuk-dark-200 mb-8">
+      Marketing & Propaganda
+    </p>
+    <p class="text-xl md:text-2xl text-vuk-dark-300 max-w-3xl mx-auto mb-12">
+      Transformamos ideias em experiências que conectam marcas e pessoas
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <button class="group relative px-8 py-4 bg-gradient-vuk rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:shadow-vuk-glow hover:scale-105">
+        <span class="relative z-10">Nossos Projetos</span>
+      </button>
+      <button class="px-8 py-4 border-2 border-vuk-primary-500 rounded-full font-semibold text-lg hover:bg-vuk-primary-500/10 transition-all duration-300">
+        Fale Conosco
+      </button>
+    </div>
+
+    </div>
+
+</section>
