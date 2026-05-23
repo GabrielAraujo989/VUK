@@ -1,0 +1,68 @@
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+     [class.scrolled]="isScrolled">
+  <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+
+    <!-- Logo: ícone simples + texto VUK -->
+    <button (click)="scrollTo('hero')" class="flex items-center gap-2.5 group">
+      <div class="relative">
+        <img src="logo_VUK_simples.PNG"
+             alt="VUK"
+             class="h-10 w-10 object-contain wolf-icon transition-all duration-300 group-hover:scale-110">
+        <!-- Glow atrás do ícone -->
+        <div class="absolute inset-0 rounded-full bg-vuk-primary-500/0 group-hover:bg-vuk-primary-500/20 blur-md transition-all duration-300 scale-150"></div>
+      </div>
+      <span class="font-display font-black text-xl tracking-widest bg-gradient-vuk bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
+        VUK
+      </span>
+    </button>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-8">
+      @for (link of navLinks; track link.anchor) {
+        <button
+          (click)="scrollTo(link.anchor)"
+          class="relative text-sm font-semibold text-vuk-dark-300 hover:text-white transition-colors duration-300 nav-link-btn">
+          {{ link.label }}
+        </button>
+      }
+    </div>
+
+    <!-- CTA + Mobile Toggle -->
+    <div class="flex items-center gap-4">
+      <button (click)="scrollTo('contact')"
+        class="hidden md:block px-6 py-2.5 bg-gradient-vuk rounded-full text-sm font-bold hover:shadow-vuk-glow hover:scale-105 transition-all duration-300">
+        Fale Conosco
+      </button>
+
+      <!-- Mobile menu button -->
+      <button (click)="toggleMenu()" class="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5">
+        <span class="w-6 h-0.5 bg-white transition-all duration-300"
+              [class.rotate-45]="isMobileMenuOpen"
+              [class.translate-y-2]="isMobileMenuOpen"></span>
+        <span class="w-6 h-0.5 bg-white transition-all duration-300"
+              [class.opacity-0]="isMobileMenuOpen"></span>
+        <span class="w-6 h-0.5 bg-white transition-all duration-300"
+              [class.-rotate-45]="isMobileMenuOpen"
+              [class.-translate-y-2]="isMobileMenuOpen"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden overflow-hidden transition-all duration-500"
+       [class.max-h-0]="!isMobileMenuOpen"
+       [class.max-h-96]="isMobileMenuOpen">
+    <div class="px-6 pb-6 flex flex-col gap-4 border-t border-white/10 pt-4">
+      @for (link of navLinks; track link.anchor) {
+        <button (click)="scrollTo(link.anchor)"
+          class="text-left text-vuk-dark-200 hover:text-vuk-primary-400 font-semibold transition-colors py-2">
+          {{ link.label }}
+        </button>
+      }
+      <button (click)="scrollTo('contact')"
+        class="mt-2 px-6 py-3 bg-gradient-vuk rounded-full font-bold text-center hover:shadow-vuk-glow transition-all duration-300">
+        Fale Conosco
+      </button>
+    </div>
+  </div>
+</nav>

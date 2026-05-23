@@ -1,1 +1,80 @@
-// Services component styles
+.wolf-icon-section {
+  filter: brightness(0) saturate(100%) invert(28%) sepia(80%) saturate(1500%) hue-rotate(245deg) brightness(0.9) drop-shadow(0 0 12px rgba(139, 92, 246, 0.6));
+  animation: wolf-float 5s ease-in-out infinite;
+}
+
+@keyframes wolf-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Card 3D tilt */
+.service-card {
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+
+  &:hover {
+    box-shadow:
+      0 30px 60px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Glowing border usando var(--accent) */
+.card-border {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      var(--accent, #8b5cf6) 0%,
+      transparent 50%,
+      var(--accent, #8b5cf6) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .service-card:hover &::before {
+    opacity: 1;
+  }
+}
+
+/* Shine sweep on hover */
+.card-shine {
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.06) 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.06) 60%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: none;
+
+  .service-card:hover & {
+    animation: shine-sweep 0.7s ease forwards;
+  }
+}
+
+@keyframes shine-sweep {
+  from { background-position: 200% center; opacity: 0; }
+  20%  { opacity: 1; }
+  to   { background-position: -50% center; opacity: 0; }
+}
+
+/* Pill tag */
+.tag-pill {
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(8px);
+}

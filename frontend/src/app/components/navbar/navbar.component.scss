@@ -1,0 +1,37 @@
+nav {
+  background: transparent;
+
+  &.scrolled {
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.wolf-icon {
+  /* Inverte para branco/light no dark background e adiciona filtro roxo */
+  filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(230deg) brightness(1.2);
+
+  &:hover {
+    filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(240deg) brightness(1.4) drop-shadow(0 0 8px rgba(139, 92, 246, 0.8));
+  }
+}
+
+.nav-link-btn {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}

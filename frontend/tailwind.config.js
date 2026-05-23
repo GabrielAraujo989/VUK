@@ -6,65 +6,59 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Cores principais da VUK - Paleta arrojada e moderna
         vuk: {
-          // Roxo vibrante - Cor principal da marca
           primary: {
             50: '#f5f3ff',
             100: '#ede9fe',
             200: '#ddd6fe',
             300: '#c4b5fd',
             400: '#a78bfa',
-            500: '#8b5cf6',  // Cor principal
+            500: '#8b5cf6',
             600: '#7c3aed',
             700: '#6d28d9',
             800: '#5b21b6',
             900: '#4c1d95',
             950: '#2e1065',
           },
-          // Laranja elétrico - Cor de destaque/ação
           accent: {
             50: '#fff7ed',
             100: '#ffedd5',
             200: '#fed7aa',
             300: '#fdba74',
             400: '#fb923c',
-            500: '#f97316',  // Cor de destaque
+            500: '#f97316',
             600: '#ea580c',
             700: '#c2410c',
             800: '#9a3412',
             900: '#7c2d12',
             950: '#431407',
           },
-          // Azul ciano - Cor complementar
           secondary: {
             50: '#ecfeff',
             100: '#cffafe',
             200: '#a5f3fc',
             300: '#67e8f9',
             400: '#22d3ee',
-            500: '#06b6d4',  // Cor secundária
+            500: '#06b6d4',
             600: '#0891b2',
             700: '#0e7490',
             800: '#155e75',
             900: '#164e63',
             950: '#083344',
           },
-          // Rosa vibrante - Cor de destaque alternativa
           pink: {
             50: '#fdf2f8',
             100: '#fce7f3',
             200: '#fbcfe8',
             300: '#f9a8d4',
             400: '#f472b6',
-            500: '#ec4899',  // Rosa vibrante
+            500: '#ec4899',
             600: '#db2777',
             700: '#be185d',
             800: '#9f1239',
             900: '#831843',
             950: '#500724',
           },
-          // Neutros escuros - Para backgrounds e textos
           dark: {
             50: '#f8fafc',
             100: '#f1f5f9',
@@ -75,28 +69,88 @@ module.exports = {
             600: '#475569',
             700: '#334155',
             800: '#1e293b',
-            900: '#0f172a',  // Background escuro principal
+            900: '#0f172a',
             950: '#020617',
           },
         },
       },
       fontFamily: {
-        // Fontes modernas e arrojadas
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Poppins', 'sans-serif'],
         mono: ['Fira Code', 'monospace'],
       },
       backgroundImage: {
-        // Gradientes personalizados para a VUK
         'gradient-vuk': 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
         'gradient-vuk-alt': 'linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%)',
         'gradient-vuk-accent': 'linear-gradient(135deg, #f97316 0%, #ec4899 100%)',
         'gradient-dark': 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
       },
       boxShadow: {
-        'vuk-glow': '0 0 40px rgba(139, 92, 246, 0.4)',
-        'vuk-glow-accent': '0 0 40px rgba(249, 115, 22, 0.4)',
-        'vuk-card': '0 10px 40px rgba(0, 0, 0, 0.2)',
+        'vuk-glow': '0 0 40px rgba(139, 92, 246, 0.5), 0 0 80px rgba(139, 92, 246, 0.2)',
+        'vuk-glow-accent': '0 0 40px rgba(249, 115, 22, 0.5), 0 0 80px rgba(249, 115, 22, 0.2)',
+        'vuk-glow-pink': '0 0 40px rgba(236, 72, 153, 0.5), 0 0 80px rgba(236, 72, 153, 0.2)',
+        'vuk-card': '0 10px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(139, 92, 246, 0.1)',
+        'vuk-card-hover': '0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(139, 92, 246, 0.3)',
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'fade-in-down': {
+          '0%': { opacity: '0', transform: 'translateY(-30px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+          '33%': { transform: 'translateY(-15px) rotate(1deg)' },
+          '66%': { transform: 'translateY(-8px) rotate(-1deg)' },
+        },
+        'float-reverse': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(15px)' },
+        },
+        'spin-slow': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        'slide-diagonal': {
+          '0%': { transform: 'translateX(-100%) rotate(45deg)' },
+          '100%': { transform: 'translateX(200%) rotate(45deg)' },
+        },
+        'wave-slow': {
+          '0%, 100%': { transform: 'scale(1) rotate(0deg)' },
+          '50%': { transform: 'scale(1.1) rotate(5deg)' },
+        },
+        'gradient': {
+          '0%, 100%': { opacity: '0.3' },
+          '50%': { opacity: '0.6' },
+        },
+        'blink': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
+        'shimmer': {
+          '0%': { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition: '200% center' },
+        },
+        'glow-pulse': {
+          '0%, 100%': { boxShadow: '0 0 20px rgba(139,92,246,0.3)' },
+          '50%': { boxShadow: '0 0 60px rgba(139,92,246,0.8), 0 0 100px rgba(139,92,246,0.4)' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 0.8s ease-out both',
+        'fade-in-down': 'fade-in-down 0.8s ease-out both',
+        'float': 'float 6s ease-in-out infinite',
+        'float-reverse': 'float-reverse 7s ease-in-out infinite',
+        'spin-slow': 'spin-slow 20s linear infinite',
+        'slide-diagonal': 'slide-diagonal 8s linear infinite',
+        'wave-slow': 'wave-slow 8s ease-in-out infinite',
+        'gradient': 'gradient 4s ease-in-out infinite',
+        'blink': 'blink 1s step-end infinite',
+        'shimmer': 'shimmer 3s linear infinite',
+        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
       },
     },
   },

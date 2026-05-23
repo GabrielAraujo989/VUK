@@ -1,0 +1,36 @@
+<!-- Stats Section -->
+<section class="relative py-20 overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-gradient-to-r from-vuk-primary-900/30 via-vuk-dark-900 to-vuk-accent-900/20"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(139,92,246,0.1)_0%,_transparent_70%)]"></div>
+
+  <!-- Glowing line top -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vuk-primary-500/60 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vuk-accent-500/60 to-transparent"></div>
+
+  <!-- Logo simples como marca d'água central -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <img src="logo_VUK_simples.PNG" alt="" class="w-64 h-64 object-contain opacity-[0.04] select-none wolf-watermark">
+  </div>
+
+  <div class="relative container mx-auto px-6 z-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      @for (stat of stats; track stat.label) {
+        <div class="text-center group">
+          <!-- Icon -->
+          <div class="text-4xl mb-3 transform group-hover:scale-125 transition-transform duration-300">{{ stat.icon }}</div>
+
+          <!-- Counter -->
+          <div class="font-display text-5xl md:text-6xl font-black mb-2 relative inline-block">
+            <span class="bg-gradient-vuk bg-clip-text text-transparent">{{ stat.display }}{{ stat.suffix }}</span>
+            <!-- Glow behind number -->
+            <span class="absolute inset-0 blur-lg opacity-0 group-hover:opacity-50 bg-gradient-vuk bg-clip-text text-transparent transition-opacity duration-300">{{ stat.display }}{{ stat.suffix }}</span>
+          </div>
+
+          <!-- Label -->
+          <p class="text-vuk-dark-400 text-sm font-medium uppercase tracking-wider">{{ stat.label }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

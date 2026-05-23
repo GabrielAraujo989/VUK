@@ -1,1 +1,27 @@
-// Contact component styles
+.footer-logo {
+  filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.4));
+  opacity: 0.85;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.7));
+  }
+}
+
+.footer-wolf {
+  /* Converte para tom roxo do tema VUK */
+  filter: brightness(0) saturate(100%) invert(28%) sepia(80%) saturate(1500%) hue-rotate(245deg) brightness(0.95);
+  animation: wolf-float 4s ease-in-out infinite;
+  transition: filter 0.3s ease;
+
+  &:hover {
+    filter: brightness(0) saturate(100%) invert(35%) sepia(100%) saturate(2000%) hue-rotate(260deg) brightness(1.2) drop-shadow(0 0 20px rgba(139, 92, 246, 0.9));
+  }
+}
+
+@keyframes wolf-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-6px) rotate(1deg); }
+  66% { transform: translateY(-3px) rotate(-1deg); }
+}

@@ -1,0 +1,12 @@
+.wolf-icon-portfolio {
+  filter: brightness(0) saturate(100%) invert(50%) sepia(80%) saturate(1200%) hue-rotate(5deg) brightness(1.1);
+  animation: float 5s ease-in-out infinite;
+  animation-delay: 0.5s; }
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px); }
+  50% {
+    transform: translateY(-8px); } }
+
+/*# sourceMappingURL=portfolio.component.css.map */

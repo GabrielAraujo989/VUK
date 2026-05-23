@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,eAAgB;EACd,MAAM,EAAE,uBAAuB",
+"sources": ["stats.component.scss"],
+"names": [],
+"file": "stats.component.css"
+}

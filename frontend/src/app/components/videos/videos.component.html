@@ -1,0 +1,135 @@
+<!-- Vídeos Institucionais Section -->
+<section id="videos" class="relative py-24 bg-vuk-dark-950 overflow-hidden">
+
+  <!-- Background -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,_rgba(139,92,246,0.12)_0%,_transparent_70%)]"></div>
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vuk-primary-500/50 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vuk-accent-500/50 to-transparent"></div>
+    <div class="absolute top-1/3 -right-32 w-96 h-96 bg-vuk-primary-500/10 rounded-full blur-3xl animate-spin-slow"></div>
+    <div class="absolute bottom-1/3 -left-32 w-96 h-96 bg-vuk-accent-500/10 rounded-full blur-3xl animate-spin-slow" style="animation-direction:reverse"></div>
+  </div>
+
+  <div class="container mx-auto px-6 relative z-10">
+
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-vuk-primary-500/10 border border-vuk-primary-500/30 mb-6">
+        <svg class="w-4 h-4 text-vuk-primary-400" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088C19.539 3.6 12 3.6 12 3.6s-7.537 0-9.407.517a3.007 3.007 0 0 0-2.088 2.088C0 8.07 0 12.01 0 12.01s0 3.94.505 5.805a3.007 3.007 0 0 0 2.088 2.088C4.463 20.42 12 20.42 12 20.42s7.537 0 9.407-.517a3.007 3.007 0 0 0 2.088-2.088C24 15.95 24 12.01 24 12.01s0-3.94-.505-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+        </svg>
+        <span class="text-sm font-bold text-vuk-primary-300 tracking-wider uppercase">Canal VUK</span>
+      </div>
+      <h2 class="font-display text-5xl md:text-6xl font-bold mb-4">
+        <span class="bg-gradient-vuk bg-clip-text text-transparent">Vídeos Institucionais</span>
+      </h2>
+      <p class="text-xl text-vuk-dark-300 max-w-2xl mx-auto">
+        Conheça nosso trabalho, metodologia e os resultados que entregamos para nossos clientes
+      </p>
+    </div>
+
+    <!-- Videos Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
+      @for (video of videos; track video.id) {
+        <div class="video-card group relative rounded-2xl overflow-hidden cursor-pointer bg-vuk-dark-800 border border-vuk-dark-700 hover:border-vuk-primary-500/60 transition-all duration-400 hover:-translate-y-2 hover:shadow-vuk-card"
+             (click)="openVideo(video.id)">
+
+          <!-- Thumbnail -->
+          <div class="relative overflow-hidden" style="aspect-ratio: 16/9">
+            <img [src]="getThumb(video.id)"
+                 [alt]="video.title"
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                 onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80'">
+
+            <!-- Dark overlay -->
+            <div class="absolute inset-0 bg-vuk-dark-950/40 group-hover:bg-vuk-dark-950/20 transition-colors duration-300"></div>
+
+            <!-- Play button -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="play-btn w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-vuk-primary-500 group-hover:border-vuk-primary-400">
+                <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Duration badge / Tag -->
+            <div class="absolute top-3 left-3">
+              <span class="px-2.5 py-1 text-xs font-bold uppercase tracking-wider rounded-full bg-vuk-primary-600/80 backdrop-blur-sm text-white border border-vuk-primary-400/30">
+                {{ video.tag }}
+              </span>
+            </div>
+
+            <!-- YouTube logo -->
+            <div class="absolute top-3 right-3 opacity-70 group-hover:opacity-100 transition-opacity">
+              <svg class="w-8 h-8" viewBox="0 0 24 24" fill="#FF0000">
+                <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088C19.539 3.6 12 3.6 12 3.6s-7.537 0-9.407.517a3.007 3.007 0 0 0-2.088 2.088C0 8.07 0 12.01 0 12.01s0 3.94.505 5.805a3.007 3.007 0 0 0 2.088 2.088C4.463 20.42 12 20.42 12 20.42s7.537 0 9.407-.517a3.007 3.007 0 0 0 2.088-2.088C24 15.95 24 24 24 12.01s0-3.94-.505-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card info -->
+          <div class="p-5">
+            <h3 class="font-display text-lg font-bold text-white mb-2 group-hover:text-vuk-primary-300 transition-colors line-clamp-1">
+              {{ video.title }}
+            </h3>
+            <p class="text-sm text-vuk-dark-400 leading-relaxed line-clamp-2">
+              {{ video.description }}
+            </p>
+            <div class="mt-4 flex items-center gap-2 text-vuk-primary-400 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <span>Assistir agora</span>
+            </div>
+          </div>
+
+        </div>
+      }
+    </div>
+
+    <!-- Link para canal -->
+    <div class="text-center">
+      <a href="https://www.youtube.com/@VukComunicacao"
+         target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-3 px-8 py-4 bg-[#FF0000] hover:bg-[#cc0000] rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,0,0,0.4)]">
+        <svg class="w-6 h-6" fill="white" viewBox="0 0 24 24">
+          <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088C19.539 3.6 12 3.6 12 3.6s-7.537 0-9.407.517a3.007 3.007 0 0 0-2.088 2.088C0 8.07 0 12.01 0 12.01s0 3.94.505 5.805a3.007 3.007 0 0 0 2.088 2.088C4.463 20.42 12 20.42 12 20.42s7.537 0 9.407-.517a3.007 3.007 0 0 0 2.088-2.088C24 15.95 24 12.01 24 12.01s0-3.94-.505-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+        </svg>
+        Visitar nosso Canal
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Modal de vídeo -->
+  @if (activeVideo) {
+    <div class="video-modal fixed inset-0 z-50 flex items-center justify-center p-4"
+         (click)="closeVideo()">
+      <!-- Backdrop -->
+      <div class="absolute inset-0 bg-black/90 backdrop-blur-md"></div>
+
+      <!-- Modal content -->
+      <div class="relative w-full max-w-4xl z-10" (click)="$event.stopPropagation()">
+        <!-- Close button -->
+        <button (click)="closeVideo()"
+          class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all duration-200 hover:scale-110">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <!-- iFrame -->
+        <div class="video-embed rounded-2xl overflow-hidden border border-vuk-primary-500/30 shadow-[0_0_60px_rgba(139,92,246,0.3)]">
+          <iframe
+            [src]="getSafeUrl(activeVideo)"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="w-full"
+            style="aspect-ratio: 16/9">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  }
+
+</section>
