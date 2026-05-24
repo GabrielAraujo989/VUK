@@ -19,6 +19,7 @@ interface Video {
 })
 export class VideosComponent {
   activeVideo: string | null = null;
+  activeSafeUrl: SafeResourceUrl | null = null;
 
   videos: Video[] = [
     {
@@ -46,19 +47,17 @@ export class VideosComponent {
 
   openVideo(id: string) {
     this.activeVideo = id;
+    this.activeSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&color=white&autoplay=1`
+    );
   }
 
   closeVideo() {
     this.activeVideo = null;
+    this.activeSafeUrl = null;
   }
 
   getThumb(id: string): string {
     return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-  }
-
-  getSafeUrl(id: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(
-      `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&color=white&autoplay=1`
-    );
   }
 }
